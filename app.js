@@ -41,7 +41,7 @@ http.createServer(app).listen(app.get('port'), function(){
 new cronJob('5 * * * * *', function(){
   phantom.create(function(err,ph) {
     return ph.createPage(function(err,page) {
-      return page.open("http://0.0.0.0:9292/js_latencies", function(err,status) {
+      return page.open("http://realtime-benchmarking.herokuapp.com//js_latencies", function(err,status) {
         console.log("opened site? ", status);
         page.includeJs('http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js', function(err) {
           //jQuery Loaded.
@@ -58,5 +58,5 @@ new cronJob('5 * * * * *', function(){
       });
     });
   });
-  console.log('Cron every minute');
+  console.log('Cron every 5 minutes');
 }, null, true);
