@@ -2,7 +2,7 @@
 /**
  * Module dependencies.
  */
-
+require('newrelic');
 var express = require('express');
 var routes = require('./routes');
 var user = require('./routes/user');
@@ -38,7 +38,7 @@ http.createServer(app).listen(app.get('port'), function(){
 });
 
 
-new cronJob('1 * * * * *', function(){
+new cronJob('5 * * * * *', function(){
   phantom.create(function(err,ph) {
     return ph.createPage(function(err,page) {
       return page.open("http://0.0.0.0:9292/js_latencies", function(err,status) {
