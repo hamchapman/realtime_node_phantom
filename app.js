@@ -39,8 +39,6 @@ http.createServer(app).listen(app.get('port'), function(){
 
 
 new cronJob('*/5 * * * *', function(){
-  console.log("**********************************************************************************************");
-  console.log(new Date());
   phantom.create(function(err,ph) {
     return ph.createPage(function(err,page) {
       return page.open("http://realtime-benchmarking.herokuapp.com/js_latencies", function(err,status) {
